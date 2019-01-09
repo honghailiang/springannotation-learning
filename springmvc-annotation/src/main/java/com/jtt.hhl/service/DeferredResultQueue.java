@@ -1,4 +1,4 @@
-package com.atguigu.service;
+package com.jtt.hhl.service;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;

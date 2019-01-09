@@ -54,8 +54,8 @@ import com.jtt.hhl.dao.BookDao;
  *
  */
 @Configuration
-@ComponentScan({"com.atguigu.service","com.atguigu.dao",
-	"com.atguigu.controller","com.atguigu.bean"})
+@ComponentScan({"com.jtt.hhl.service","com.jtt.hhl.dao",
+	"com.jtt.hhl.controller","com.jtt.hhl.bean"})
 public class MainConifgOfAutowired {
 	
 	@Primary

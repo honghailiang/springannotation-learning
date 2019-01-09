@@ -1,4 +1,4 @@
-package com.atguigu.config;
+package com.jtt.hhl.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Controller;
 
 //SpringµÄÈÝÆ÷²»É¨Ãècontroller;¸¸ÈÝÆ÷
-@ComponentScan(value="com.atguigu",excludeFilters={
+@ComponentScan(value="com.jtt.hhl",excludeFilters={
 		@Filter(type=FilterType.ANNOTATION,classes={Controller.class})
 })
 public class RootConfig {

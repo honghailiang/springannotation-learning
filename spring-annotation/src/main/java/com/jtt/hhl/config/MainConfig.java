@@ -14,7 +14,7 @@ import com.jtt.hhl.bean.Person;
 
 @ComponentScans(
 		value = {
-				@ComponentScan(value="com.atguigu",includeFilters = {
+				@ComponentScan(value="com.jtt.hhl",includeFilters = {
 /*						@Filter(type=FilterType.ANNOTATION,classes={Controller.class}),
 						@Filter(type=FilterType.ASSIGNABLE_TYPE,classes={BookService.class}),*/
 						@Filter(type=FilterType.CUSTOM,classes={MyTypeFilter.class})

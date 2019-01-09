@@ -97,7 +97,7 @@ import org.springframework.context.annotation.Configuration;
  * 
  *
  */
-@ComponentScan("com.atguigu.ext")
+@ComponentScan("com.jtt.hhl.ext")
 @Configuration
 public class ExtConfig {
 	

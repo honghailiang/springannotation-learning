@@ -1,4 +1,4 @@
-package com.atguigu.servlet;
+package com.jtt.hhl.servlet;
 
 import java.util.EnumSet;
 import java.util.Set;
@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 import javax.servlet.annotation.HandlesTypes;
 
-import com.atguigu.service.HelloService;
+import com.jtt.hhl.service.HelloService;
 
 //容器启动的时候会将@HandlesTypes指定的这个类型下面的子类（实现类，子接口等）传递过来；
 //传入感兴趣的类型；

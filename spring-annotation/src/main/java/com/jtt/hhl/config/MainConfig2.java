@@ -2,20 +2,14 @@ package com.jtt.hhl.config;
 
 import com.jtt.hhl.bean.Color;
 import com.jtt.hhl.bean.ColorFactoryBean;
+import com.jtt.hhl.bean.Person;
+import com.jtt.hhl.bean.Red;
 import com.jtt.hhl.condition.LinuxCondition;
 import com.jtt.hhl.condition.MyImportBeanDefinitionRegistrar;
 import com.jtt.hhl.condition.MyImportSelector;
 import com.jtt.hhl.condition.WindowsCondition;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Lazy;
-
-import com.jtt.hhl.bean.Person;
-import com.jtt.hhl.bean.Red;
-import com.atguigu.test.IOCTest;
+import org.springframework.context.annotation.*;
 
 //�������ͳһ���á����㵱ǰ����������������õ�����beanע�������Ч��
 @Conditional({WindowsCondition.class})

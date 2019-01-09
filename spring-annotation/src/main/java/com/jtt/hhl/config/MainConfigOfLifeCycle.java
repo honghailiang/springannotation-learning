@@ -57,7 +57,7 @@ import com.jtt.hhl.bean.Car;
  * @author lfy
  *
  */
-@ComponentScan("com.atguigu.bean")
+@ComponentScan("com.jtt.hhl.bean")
 @Configuration
 public class MainConfigOfLifeCycle {
 	
