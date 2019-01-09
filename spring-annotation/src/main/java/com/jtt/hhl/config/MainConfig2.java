@@ -1,21 +1,15 @@
 package com.jtt.hhl.config;
 
+import com.jtt.hhl.bean.Color;
+import com.jtt.hhl.bean.ColorFactoryBean;
+import com.jtt.hhl.bean.Person;
+import com.jtt.hhl.bean.Red;
 import com.jtt.hhl.condition.LinuxCondition;
 import com.jtt.hhl.condition.MyImportBeanDefinitionRegistrar;
 import com.jtt.hhl.condition.MyImportSelector;
 import com.jtt.hhl.condition.WindowsCondition;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.Lazy;
-
-import com.jtt.hhl.bean.Color;
-import com.jtt.hhl.bean.ColorFactoryBean;
-import com.jtt.hhl.bean.Person;
-import com.jtt.hhl.bean.Red;
-import com.jtt.hhl.test.IOCTest;
+import org.springframework.context.annotation.*;
 
 //类中组件统一设置。满足当前条件，这个类中配置的所有bean注册才能生效；
 @Conditional({WindowsCondition.class})
