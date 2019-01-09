@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyApplicationListener implements ApplicationListener<ApplicationEvent> {
 
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ôºó£¬·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//µ±ÈÝÆ÷ÖÐ·¢²¼´ËÊÂ¼þÒÔºó£¬·½·¨´¥·¢
 	@Override
 	public void onApplicationEvent(ApplicationEvent event) {
 		// TODO Auto-generated method stub
-		System.out.println("ï¿½Õµï¿½ï¿½Â¼ï¿½ï¿½ï¿½"+event);
+		System.out.println("ÊÕµ½ÊÂ¼þ£º"+event);
 	}
 
 }

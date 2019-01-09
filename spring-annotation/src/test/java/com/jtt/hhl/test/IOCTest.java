@@ -21,10 +21,10 @@ public class IOCTest {
 		Blue bean = applicationContext.getBean(Blue.class);
 		System.out.println(bean);
 		
-		//ï¿½ï¿½ï¿½ï¿½Beanï¿½ï¿½È¡ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½getObjectï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½
+		//¹¤³§Bean»ñÈ¡µÄÊÇµ÷ÓÃgetObject´´½¨µÄ¶ÔÏó
 		Object bean2 = applicationContext.getBean("colorFactoryBean");
 		Object bean3 = applicationContext.getBean("colorFactoryBean");
-		System.out.println("beanï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½"+bean2.getClass());
+		System.out.println("beanµÄÀàÐÍ£º"+bean2.getClass());
 		System.out.println(bean2 == bean3);
 		
 		Object bean4 = applicationContext.getBean("&colorFactoryBean");
@@ -42,7 +42,7 @@ public class IOCTest {
 	public void test03(){
 		String[] namesForType = applicationContext.getBeanNamesForType(Person.class);
 		ConfigurableEnvironment environment = applicationContext.getEnvironment();
-		//ï¿½ï¿½Ì¬ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Windows 10
+		//¶¯Ì¬»ñÈ¡»·¾³±äÁ¿µÄÖµ£»Windows 10
 		String property = environment.getProperty("os.name");
 		System.out.println(property);
 		for (String name : namesForType) {
@@ -62,7 +62,7 @@ public class IOCTest {
 //			System.out.println(name);
 //		}
 //		
-		System.out.println("iocï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½....");
+		System.out.println("iocÈÝÆ÷´´½¨Íê³É....");
 		Object bean = applicationContext.getBean("person");
 		Object bean2 = applicationContext.getBean("person");
 		System.out.println(bean == bean2);

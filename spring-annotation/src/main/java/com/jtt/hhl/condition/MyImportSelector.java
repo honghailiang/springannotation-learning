@@ -3,16 +3,16 @@ package com.jtt.hhl.condition;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 
-//ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//×Ô¶¨ÒåÂß¼­·µ»ØÐèÒªµ¼ÈëµÄ×é¼þ
 public class MyImportSelector implements ImportSelector {
 
-	//ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½
-	//AnnotationMetadata:ï¿½ï¿½Ç°ï¿½ï¿½×¢@Import×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ï¢
+	//·µ»ØÖµ£¬¾ÍÊÇµ½µ¼Èëµ½ÈÝÆ÷ÖÐµÄ×é¼þÈ«ÀàÃû
+	//AnnotationMetadata:µ±Ç°±ê×¢@Import×¢½âµÄÀàµÄËùÓÐ×¢½âÐÅÏ¢
 	@Override
 	public String[] selectImports(AnnotationMetadata importingClassMetadata) {
 		// TODO Auto-generated method stub
 		//importingClassMetadata
-		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½nullÖµ
+		//·½·¨²»Òª·µ»ØnullÖµ
 		return new String[]{"Blue","Yellow"};
 	}
 

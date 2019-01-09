@@ -10,18 +10,18 @@ import com.jtt.hhl.config.MainConfigOfProfile;
 
 public class IOCTest_Profile {
 	
-	//1ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã¼ï¿½ï¿½ï¿½ -Dspring.profiles.active=test
-	//2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½
+	//1¡¢Ê¹ÓÃÃüÁîÐÐ¶¯Ì¬²ÎÊý: ÔÚÐéÄâ»ú²ÎÊýÎ»ÖÃ¼ÓÔØ -Dspring.profiles.active=test
+	//2¡¢´úÂëµÄ·½Ê½¼¤»îÄ³ÖÖ»·¾³£»
 	@Test
 	public void test01(){
 		AnnotationConfigApplicationContext applicationContext = 
 				new AnnotationConfigApplicationContext();
-		//1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½applicationContext
-		//2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
+		//1¡¢´´½¨Ò»¸öapplicationContext
+		//2¡¢ÉèÖÃÐèÒª¼¤»îµÄ»·¾³
 		applicationContext.getEnvironment().setActiveProfiles("dev");
-		//3ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//3¡¢×¢²áÖ÷ÅäÖÃÀà
 		applicationContext.register(MainConfigOfProfile.class);
-		//4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//4¡¢Æô¶¯Ë¢ÐÂÈÝÆ÷
 		applicationContext.refresh();
 		
 		

@@ -1,56 +1,62 @@
 package com.jtt.hhl.config;
 
-import com.jtt.hhl.bean.Color;
-import com.jtt.hhl.bean.ColorFactoryBean;
-import com.jtt.hhl.bean.Person;
-import com.jtt.hhl.bean.Red;
 import com.jtt.hhl.condition.LinuxCondition;
 import com.jtt.hhl.condition.MyImportBeanDefinitionRegistrar;
 import com.jtt.hhl.condition.MyImportSelector;
 import com.jtt.hhl.condition.WindowsCondition;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Lazy;
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³Ò»ï¿½ï¿½ï¿½Ã¡ï¿½ï¿½ï¿½ï¿½ãµ±Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½bean×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½
+import com.jtt.hhl.bean.Color;
+import com.jtt.hhl.bean.ColorFactoryBean;
+import com.jtt.hhl.bean.Person;
+import com.jtt.hhl.bean.Red;
+import com.jtt.hhl.test.IOCTest;
+
+//ÀàÖÐ×é¼þÍ³Ò»ÉèÖÃ¡£Âú×ãµ±Ç°Ìõ¼þ£¬Õâ¸öÀàÖÐÅäÖÃµÄËùÓÐbean×¢²á²ÅÄÜÉúÐ§£»
 @Conditional({WindowsCondition.class})
 @Configuration
 @Import({Color.class,Red.class, MyImportSelector.class, MyImportBeanDefinitionRegistrar.class})
-//@Importï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idÄ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½
+//@Importµ¼Èë×é¼þ£¬idÄ¬ÈÏÊÇ×é¼þµÄÈ«ÀàÃû
 public class MainConfig2 {
 	
-	//Ä¬ï¿½ï¿½ï¿½Çµï¿½Êµï¿½ï¿½ï¿½ï¿½
+	//Ä¬ÈÏÊÇµ¥ÊµÀýµÄ
 	/**
 	 * ConfigurableBeanFactory#SCOPE_PROTOTYPE    
 	 * @see ConfigurableBeanFactory#SCOPE_SINGLETON  
 	 * @see org.springframework.web.context.WebApplicationContext#SCOPE_REQUEST  request
 	 * @see org.springframework.web.context.WebApplicationContext#SCOPE_SESSION	 sesssion
 	 * @return\
-	 * @Scope:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * prototypeï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ä£ï¿½iocï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½
-	 * 					Ã¿ï¿½Î»ï¿½È¡ï¿½ï¿½Ê±ï¿½ï¿½Å»ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * singletonï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ä£ï¿½Ä¬ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½iocï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½iocï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½
-	 * 			ï¿½Ôºï¿½Ã¿ï¿½Î»ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½map.get()ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½
-	 * requestï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ó´´½ï¿½Ò»ï¿½ï¿½Êµï¿½ï¿½
-	 * sessionï¿½ï¿½Í¬Ò»ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Êµï¿½ï¿½
+	 * @Scope:µ÷Õû×÷ÓÃÓò
+	 * prototype£º¶àÊµÀýµÄ£ºiocÈÝÆ÷Æô¶¯²¢²»»áÈ¥µ÷ÓÃ·½·¨´´½¨¶ÔÏó·ÅÔÚÈÝÆ÷ÖÐ¡£
+	 * 					Ã¿´Î»ñÈ¡µÄÊ±ºò²Å»áµ÷ÓÃ·½·¨´´½¨¶ÔÏó£»
+	 * singleton£ºµ¥ÊµÀýµÄ£¨Ä¬ÈÏÖµ£©£ºiocÈÝÆ÷Æô¶¯»áµ÷ÓÃ·½·¨´´½¨¶ÔÏó·Åµ½iocÈÝÆ÷ÖÐ¡£
+	 * 			ÒÔºóÃ¿´Î»ñÈ¡¾ÍÊÇÖ±½Ó´ÓÈÝÆ÷£¨map.get()£©ÖÐÄÃ£¬
+	 * request£ºÍ¬Ò»´ÎÇëÇó´´½¨Ò»¸öÊµÀý
+	 * session£ºÍ¬Ò»¸ösession´´½¨Ò»¸öÊµÀý
 	 * 
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½
-	 * 		ï¿½ï¿½Êµï¿½ï¿½beanï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò´´½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * 		ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó¡£µï¿½Ò»ï¿½ï¿½Ê¹ï¿½ï¿½(ï¿½ï¿½È¡)Beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬²ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+	 * ÀÁ¼ÓÔØ£º
+	 * 		µ¥ÊµÀýbean£ºÄ¬ÈÏÔÚÈÝÆ÷Æô¶¯µÄÊ±ºò´´½¨¶ÔÏó£»
+	 * 		ÀÁ¼ÓÔØ£ºÈÝÆ÷Æô¶¯²»´´½¨¶ÔÏó¡£µÚÒ»´ÎÊ¹ÓÃ(»ñÈ¡)Bean´´½¨¶ÔÏó£¬²¢³õÊ¼»¯£»
 	 * 
 	 */
 //	@Scope("prototype")
 	@Lazy
 	@Bean("person")
 	public Person person(){
-		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Person....");
-		return new Person("ï¿½ï¿½ï¿½ï¿½", 25);
+		System.out.println("¸øÈÝÆ÷ÖÐÌí¼ÓPerson....");
+		return new Person("ÕÅÈý", 25);
 	}
 	
 	/**
-	 * @Conditional({Condition}) ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½bean
+	 * @Conditional({Condition}) £º °´ÕÕÒ»¶¨µÄÌõ¼þ½øÐÐÅÐ¶Ï£¬Âú×ãÌõ¼þ¸øÈÝÆ÷ÖÐ×¢²ábean
 	 * 
-	 * ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½windowsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½("bill")
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½linuxÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½("linus")
+	 * Èç¹ûÏµÍ³ÊÇwindows£¬¸øÈÝÆ÷ÖÐ×¢²á("bill")
+	 * Èç¹ûÊÇlinuxÏµÍ³£¬¸øÈÝÆ÷ÖÐ×¢²á("linus")
 	 */
 	
 	@Bean("bill")
@@ -65,16 +71,16 @@ public class MainConfig2 {
 	}
 	
 	/**
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * 1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¨ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½×¢×¢ï¿½â£¨@Controller/@Service/@Repository/@Componentï¿½ï¿½[ï¿½Ô¼ï¿½Ð´ï¿½ï¿½ï¿½ï¿½]
-	 * 2ï¿½ï¿½ï¿½ï¿½@Bean[ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
-	 * 3ï¿½ï¿½ï¿½ï¿½@Import[ï¿½ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½]
-	 * 		1ï¿½ï¿½ï¿½ï¿½@Import(Òªï¿½ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¾Í»ï¿½ï¿½Ô¶ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idÄ¬ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½
-	 * 		2ï¿½ï¿½ï¿½ï¿½ImportSelector:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£»
-	 * 		3ï¿½ï¿½ï¿½ï¿½ImportBeanDefinitionRegistrar:ï¿½Ö¶ï¿½×¢ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * 4ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Springï¿½á¹©ï¿½ï¿½ FactoryBeanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Beanï¿½ï¿½;
-	 * 		1ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ç¹ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½getObjectï¿½ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½
-	 * 		2ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½idÇ°ï¿½ï¿½ï¿½Ò»ï¿½ï¿½&
+	 * ¸øÈÝÆ÷ÖÐ×¢²á×é¼þ£»
+	 * 1£©¡¢°üÉ¨Ãè+×é¼þ±ê×¢×¢½â£¨@Controller/@Service/@Repository/@Component£©[×Ô¼ºÐ´µÄÀà]
+	 * 2£©¡¢@Bean[µ¼ÈëµÄµÚÈý·½°üÀïÃæµÄ×é¼þ]
+	 * 3£©¡¢@Import[¿ìËÙ¸øÈÝÆ÷ÖÐµ¼ÈëÒ»¸ö×é¼þ]
+	 * 		1£©¡¢@Import(Òªµ¼Èëµ½ÈÝÆ÷ÖÐµÄ×é¼þ)£»ÈÝÆ÷ÖÐ¾Í»á×Ô¶¯×¢²áÕâ¸ö×é¼þ£¬idÄ¬ÈÏÊÇÈ«ÀàÃû
+	 * 		2£©¡¢ImportSelector:·µ»ØÐèÒªµ¼ÈëµÄ×é¼þµÄÈ«ÀàÃûÊý×é£»
+	 * 		3£©¡¢ImportBeanDefinitionRegistrar:ÊÖ¶¯×¢²ábeanµ½ÈÝÆ÷ÖÐ
+	 * 4£©¡¢Ê¹ÓÃSpringÌá¹©µÄ FactoryBean£¨¹¤³§Bean£©;
+	 * 		1£©¡¢Ä¬ÈÏ»ñÈ¡µ½µÄÊÇ¹¤³§beanµ÷ÓÃgetObject´´½¨µÄ¶ÔÏó
+	 * 		2£©¡¢Òª»ñÈ¡¹¤³§Bean±¾Éí£¬ÎÒÃÇÐèÒª¸øidÇ°Ãæ¼ÓÒ»¸ö&
 	 * 			&colorFactoryBean
 	 */
 	@Bean

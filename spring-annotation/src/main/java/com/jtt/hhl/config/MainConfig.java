@@ -9,8 +9,8 @@ import org.springframework.context.annotation.ComponentScans;
 
 import com.jtt.hhl.bean.Person;
 
-//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½==ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
-@Configuration  //ï¿½ï¿½ï¿½ï¿½Springï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ÅäÖÃÀà==ÅäÖÃÎÄ¼ş
+@Configuration  //¸æËßSpringÕâÊÇÒ»¸öÅäÖÃÀà
 
 @ComponentScans(
 		value = {
@@ -21,17 +21,17 @@ import com.jtt.hhl.bean.Person;
 				},useDefaultFilters = false)	
 		}
 		)
-//@ComponentScan  value:Ö¸ï¿½ï¿½ÒªÉ¨ï¿½ï¿½Ä°ï¿½
-//excludeFilters = Filter[] ï¿½ï¿½Ö¸ï¿½ï¿½É¨ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ê²Ã´ï¿½ï¿½ï¿½ï¿½ï¿½Å³ï¿½ï¿½ï¿½Ğ©ï¿½ï¿½ï¿½
-//includeFilters = Filter[] ï¿½ï¿½Ö¸ï¿½ï¿½É¨ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ö»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ©ï¿½ï¿½ï¿½
-//FilterType.ANNOTATIONï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
-//FilterType.ASSIGNABLE_TYPEï¿½ï¿½ï¿½ï¿½ï¿½Õ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
-//FilterType.ASPECTJï¿½ï¿½Ê¹ï¿½ï¿½ASPECTJï¿½ï¿½ï¿½Ê½
-//FilterType.REGEXï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
-//FilterType.CUSTOMï¿½ï¿½Ê¹ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//@ComponentScan  value:Ö¸¶¨ÒªÉ¨ÃèµÄ°ü
+//excludeFilters = Filter[] £ºÖ¸¶¨É¨ÃèµÄÊ±ºò°´ÕÕÊ²Ã´¹æÔòÅÅ³ıÄÇĞ©×é¼ş
+//includeFilters = Filter[] £ºÖ¸¶¨É¨ÃèµÄÊ±ºòÖ»ĞèÒª°üº¬ÄÄĞ©×é¼ş
+//FilterType.ANNOTATION£º°´ÕÕ×¢½â
+//FilterType.ASSIGNABLE_TYPE£º°´ÕÕ¸ø¶¨µÄÀàĞÍ£»
+//FilterType.ASPECTJ£ºÊ¹ÓÃASPECTJ±í´ïÊ½
+//FilterType.REGEX£ºÊ¹ÓÃÕıÔòÖ¸¶¨
+//FilterType.CUSTOM£ºÊ¹ÓÃ×Ô¶¨Òå¹æÔò
 public class MainConfig {
 	
-	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ò»ï¿½ï¿½Bean;ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½idÄ¬ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªid
+	//¸øÈİÆ÷ÖĞ×¢²áÒ»¸öBean;ÀàĞÍÎª·µ»ØÖµµÄÀàĞÍ£¬idÄ¬ÈÏÊÇÓÃ·½·¨Ãû×÷Îªid
 	@Bean("person")
 	public Person person01(){
 		return new Person("lisi", 20);

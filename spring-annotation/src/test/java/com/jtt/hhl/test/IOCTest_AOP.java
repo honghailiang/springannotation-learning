@@ -1,9 +1,9 @@
 package com.jtt.hhl.test;
 
+import com.jtt.hhl.aop.MathCalculator;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.jtt.hhl.aop.MathCalculator;
 import com.jtt.hhl.config.MainConfigOfAOP;
 
 public class IOCTest_AOP {
@@ -12,7 +12,7 @@ public class IOCTest_AOP {
 	public void test01(){
 		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfigOfAOP.class);
 		
-		//1ï¿½ï¿½ï¿½ï¿½Òªï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//1¡¢²»Òª×Ô¼º´´½¨¶ÔÏó
 //		MathCalculator mathCalculator = new MathCalculator();
 //		mathCalculator.div(1, 1);
 		MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);

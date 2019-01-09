@@ -11,42 +11,42 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 /**
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ÇÐÃæÀà
  * @author lfy
  * 
- * @Aspectï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Springï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @Aspect£º ¸æËßSpringµ±Ç°ÀàÊÇÒ»¸öÇÐÃæÀà
  *
  */
 @Aspect
 public class LogAspects {
 	
-	//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
-	//1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	//2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//³éÈ¡¹«¹²µÄÇÐÈëµã±í´ïÊ½
+	//1¡¢±¾ÀàÒýÓÃ
+	//2¡¢ÆäËûµÄÇÐÃæÒýÓÃ
 	@Pointcut("execution(public int com.jtt.hhl.aop.MathCalculator.*(..))")
 	public void pointCut(){};
 	
-	//@Beforeï¿½ï¿½Ä¿ï¿½ê·½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ë£»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£©
+	//@BeforeÔÚÄ¿±ê·½·¨Ö®Ç°ÇÐÈë£»ÇÐÈëµã±í´ïÊ½£¨Ö¸¶¨ÔÚÄÄ¸ö·½·¨ÇÐÈë£©
 	@Before("pointCut()")
 	public void logStart(JoinPoint joinPoint){
 		Object[] args = joinPoint.getArgs();
-		System.out.println(""+joinPoint.getSignature().getName()+"ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½@Before:ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ç£ï¿½{"+Arrays.asList(args)+"}");
+		System.out.println(""+joinPoint.getSignature().getName()+"ÔËÐÐ¡£¡£¡£@Before:²ÎÊýÁÐ±íÊÇ£º{"+Arrays.asList(args)+"}");
 	}
 	
 	@After("com.jtt.hhl.aop.LogAspects.pointCut()")
 	public void logEnd(JoinPoint joinPoint){
-		System.out.println(""+joinPoint.getSignature().getName()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@After");
+		System.out.println(""+joinPoint.getSignature().getName()+"½áÊø¡£¡£¡£@After");
 	}
 	
-	//JoinPointÒ»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Ò»Î»
+	//JoinPointÒ»¶¨Òª³öÏÖÔÚ²ÎÊý±íµÄµÚÒ»Î»
 	@AfterReturning(value="pointCut()",returning="result")
 	public void logReturn(JoinPoint joinPoint,Object result){
-		System.out.println(""+joinPoint.getSignature().getName()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½ï¿½@AfterReturning:ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½{"+result+"}");
+		System.out.println(""+joinPoint.getSignature().getName()+"Õý³£·µ»Ø¡£¡£¡£@AfterReturning:ÔËÐÐ½á¹û£º{"+result+"}");
 	}
 	
 	@AfterThrowing(value="pointCut()",throwing="exception")
 	public void logException(JoinPoint joinPoint,Exception exception){
-		System.out.println(""+joinPoint.getSignature().getName()+"ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½Ï¢ï¿½ï¿½{"+exception+"}");
+		System.out.println(""+joinPoint.getSignature().getName()+"Òì³£¡£¡£¡£Òì³£ÐÅÏ¢£º{"+exception+"}");
 	}
 
 }

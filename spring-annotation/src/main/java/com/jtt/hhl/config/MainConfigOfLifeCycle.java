@@ -7,52 +7,52 @@ import org.springframework.context.annotation.Configuration;
 import com.jtt.hhl.bean.Car;
 
 /**
- * beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½
- * 		beanï¿½ï¿½ï¿½ï¿½---ï¿½ï¿½Ê¼ï¿½ï¿½----ï¿½ï¿½ï¿½ÙµÄ¹ï¿½ï¿½ï¿½
- * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½
- * ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ä³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½
+ * beanµÄÉúÃüÖÜÆÚ£º
+ * 		bean´´½¨---³õÊ¼»¯----Ïú»ÙµÄ¹ý³Ì
+ * ÈÝÆ÷¹ÜÀíbeanµÄÉúÃüÖÜÆÚ£»
+ * ÎÒÃÇ¿ÉÒÔ×Ô¶¨Òå³õÊ¼»¯ºÍÏú»Ù·½·¨£»ÈÝÆ÷ÔÚbean½øÐÐµ½µ±Ç°ÉúÃüÖÜÆÚµÄÊ±ºòÀ´µ÷ÓÃÎÒÃÇ×Ô¶¨ÒåµÄ³õÊ¼»¯ºÍÏú»Ù·½·¨
  * 
- * ï¿½ï¿½ï¿½ì£¨ï¿½ï¿½ï¿½ó´´½ï¿½ï¿½ï¿½
- * 		ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò´´½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 		ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½Î»ï¿½È¡ï¿½ï¿½Ê±ï¿½ò´´½ï¿½ï¿½ï¿½ï¿½ï¿½\
+ * ¹¹Ôì£¨¶ÔÏó´´½¨£©
+ * 		µ¥ÊµÀý£ºÔÚÈÝÆ÷Æô¶¯µÄÊ±ºò´´½¨¶ÔÏó
+ * 		¶àÊµÀý£ºÔÚÃ¿´Î»ñÈ¡µÄÊ±ºò´´½¨¶ÔÏó\
  * 
  * BeanPostProcessor.postProcessBeforeInitialization
- * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
- * 		ï¿½ï¿½ï¿½ó´´½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Ã£ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ³õÊ¼»¯£º
+ * 		¶ÔÏó´´½¨Íê³É£¬²¢¸³ÖµºÃ£¬µ÷ÓÃ³õÊ¼»¯·½·¨¡£¡£¡£
  * BeanPostProcessor.postProcessAfterInitialization
- * ï¿½ï¿½ï¿½Ù£ï¿½
- * 		ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±Õµï¿½Ê±ï¿½ï¿½
- * 		ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ï¿½ï¿½
+ * Ïú»Ù£º
+ * 		µ¥ÊµÀý£ºÈÝÆ÷¹Ø±ÕµÄÊ±ºò
+ * 		¶àÊµÀý£ºÈÝÆ÷²»»á¹ÜÀíÕâ¸öbean£»ÈÝÆ÷²»»áµ÷ÓÃÏú»Ù·½·¨£»
  * 
  * 
- * ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½BeanPostProcessorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½beforeInitializationï¿½ï¿½
- * Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nullï¿½ï¿½ï¿½ï¿½ï¿½ï¿½forÑ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ðºï¿½ï¿½ï¿½ï¿½BeanPostProcessor.postProcessorsBeforeInitialization
+ * ±éÀúµÃµ½ÈÝÆ÷ÖÐËùÓÐµÄBeanPostProcessor£»°¤¸öÖ´ÐÐbeforeInitialization£¬
+ * Ò»µ«·µ»Ønull£¬Ìø³öforÑ­»·£¬²»»áÖ´ÐÐºóÃæµÄBeanPostProcessor.postProcessorsBeforeInitialization
  * 
- * BeanPostProcessorÔ­ï¿½ï¿½
- * populateBean(beanName, mbd, instanceWrapper);ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½Öµ
+ * BeanPostProcessorÔ­Àí
+ * populateBean(beanName, mbd, instanceWrapper);¸øbean½øÐÐÊôÐÔ¸³Öµ
  * initializeBean
  * {
  * applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
- * invokeInitMethods(beanName, wrappedBean, mbd);Ö´ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½
+ * invokeInitMethods(beanName, wrappedBean, mbd);Ö´ÐÐ×Ô¶¨Òå³õÊ¼»¯
  * applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
  *}
  * 
  * 
  * 
- * 1ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ï¿½ï¿½
- * 		Í¨ï¿½ï¿½@BeanÖ¸ï¿½ï¿½init-methodï¿½ï¿½destroy-methodï¿½ï¿½
- * 2ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½BeanÊµï¿½ï¿½InitializingBeanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½
- * 				DisposableBeanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½;
- * 3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½JSR250ï¿½ï¿½
- * 		@PostConstructï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½Öµï¿½ï¿½É£ï¿½ï¿½ï¿½Ö´ï¿½Ð³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 		@PreDestroyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½beanÖ®Ç°Í¨Öªï¿½ï¿½ï¿½Ç½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 4ï¿½ï¿½ï¿½ï¿½BeanPostProcessorï¿½ï¿½interfaceï¿½ï¿½ï¿½ï¿½beanï¿½Äºï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 		ï¿½ï¿½beanï¿½ï¿½Ê¼ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 		postProcessBeforeInitialization:ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½
- * 		postProcessAfterInitialization:ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½
+ * 1£©¡¢Ö¸¶¨³õÊ¼»¯ºÍÏú»Ù·½·¨£»
+ * 		Í¨¹ý@BeanÖ¸¶¨init-methodºÍdestroy-method£»
+ * 2£©¡¢Í¨¹ýÈÃBeanÊµÏÖInitializingBean£¨¶¨Òå³õÊ¼»¯Âß¼­£©£¬
+ * 				DisposableBean£¨¶¨ÒåÏú»ÙÂß¼­£©;
+ * 3£©¡¢¿ÉÒÔÊ¹ÓÃJSR250£»
+ * 		@PostConstruct£ºÔÚbean´´½¨Íê³É²¢ÇÒÊôÐÔ¸³ÖµÍê³É£»À´Ö´ÐÐ³õÊ¼»¯·½·¨
+ * 		@PreDestroy£ºÔÚÈÝÆ÷Ïú»ÙbeanÖ®Ç°Í¨ÖªÎÒÃÇ½øÐÐÇåÀí¹¤×÷
+ * 4£©¡¢BeanPostProcessor¡¾interface¡¿£ºbeanµÄºóÖÃ´¦ÀíÆ÷£»
+ * 		ÔÚbean³õÊ¼»¯Ç°ºó½øÐÐÒ»Ð©´¦Àí¹¤×÷£»
+ * 		postProcessBeforeInitialization:ÔÚ³õÊ¼»¯Ö®Ç°¹¤×÷
+ * 		postProcessAfterInitialization:ÔÚ³õÊ¼»¯Ö®ºó¹¤×÷
  * 
- * Springï¿½×²ï¿½ï¿½ BeanPostProcessor ï¿½ï¿½Ê¹ï¿½Ã£ï¿½
- * 		beanï¿½ï¿½Öµï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@Autowiredï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½â¹¦ï¿½Ü£ï¿½@Async,xxx BeanPostProcessor;
+ * Springµ×²ã¶Ô BeanPostProcessor µÄÊ¹ÓÃ£»
+ * 		bean¸³Öµ£¬×¢ÈëÆäËû×é¼þ£¬@Autowired£¬ÉúÃüÖÜÆÚ×¢½â¹¦ÄÜ£¬@Async,xxx BeanPostProcessor;
  * 
  * @author lfy
  *

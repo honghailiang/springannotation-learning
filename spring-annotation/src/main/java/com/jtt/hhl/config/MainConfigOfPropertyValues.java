@@ -1,12 +1,11 @@
 package com.jtt.hhl.config;
 
+import com.jtt.hhl.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import com.jtt.hhl.bean.Person;
-
-//使锟斤拷@PropertySource锟斤拷取锟解部锟斤拷锟斤拷锟侥硷拷锟叫碉拷k/v锟斤拷锟芥到锟斤拷锟叫的伙拷锟斤拷锟斤拷锟斤拷锟斤拷;锟斤拷锟斤拷锟斤拷锟解部锟斤拷锟斤拷锟斤拷锟侥硷拷锟皆猴拷使锟斤拷${}取锟斤拷锟斤拷锟斤拷锟侥硷拷锟斤拷值
+//使用@PropertySource读取外部配置文件中的k/v保存到运行的环境变量中;加载完外部的配置文件以后使用${}取出配置文件的值
 @PropertySource(value={"classpath:/person.properties"})
 @Configuration
 public class MainConfigOfPropertyValues {

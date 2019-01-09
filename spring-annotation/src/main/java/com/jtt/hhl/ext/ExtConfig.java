@@ -1,98 +1,99 @@
 package com.jtt.hhl.ext;
 
-import com.jtt.hhl.bean.Blue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import com.jtt.hhl.bean.Blue;
+
 /**
- * ï¿½ï¿½Õ¹Ô­ï¿½ï¿½
- * BeanPostProcessorï¿½ï¿½beanï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¹ï¿½ï¿½ï¿½ï¿½ï¿½
+ * À©Õ¹Ô­Àí£º
+ * BeanPostProcessor£ºbeanºóÖÃ´¦ÀíÆ÷£¬bean´´½¨¶ÔÏó³õÊ¼»¯Ç°ºó½øÐÐÀ¹½Ø¹¤×÷µÄ
  * 
- * 1ï¿½ï¿½BeanFactoryPostProcessorï¿½ï¿½beanFactoryï¿½Äºï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 		ï¿½ï¿½BeanFactoryï¿½ï¿½×¼ï¿½ï¿½Ê¼ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æºï¿½ï¿½Þ¸ï¿½BeanFactoryï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½
- * 		ï¿½ï¿½ï¿½Ðµï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½beanFactoryï¿½ï¿½ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½
+ * 1¡¢BeanFactoryPostProcessor£ºbeanFactoryµÄºóÖÃ´¦ÀíÆ÷£»
+ * 		ÔÚBeanFactory±ê×¼³õÊ¼»¯Ö®ºóµ÷ÓÃ£¬À´¶¨ÖÆºÍÐÞ¸ÄBeanFactoryµÄÄÚÈÝ£»
+ * 		ËùÓÐµÄbean¶¨ÒåÒÑ¾­±£´æ¼ÓÔØµ½beanFactory£¬µ«ÊÇbeanµÄÊµÀý»¹Î´´´½¨
  * 
  * 
- * BeanFactoryPostProcessorÔ­ï¿½ï¿½:
- * 1)ï¿½ï¿½iocï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 2)ï¿½ï¿½invokeBeanFactoryPostProcessors(beanFactory);
- * 		ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½Ðµï¿½BeanFactoryPostProcessorï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ÇµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½
- * 			1ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½BeanFactoryï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BeanFactoryPostProcessorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ÇµÄ·ï¿½ï¿½ï¿½
- * 			2ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ö´ï¿½ï¿½
+ * BeanFactoryPostProcessorÔ­Àí:
+ * 1)¡¢iocÈÝÆ÷´´½¨¶ÔÏó
+ * 2)¡¢invokeBeanFactoryPostProcessors(beanFactory);
+ * 		ÈçºÎÕÒµ½ËùÓÐµÄBeanFactoryPostProcessor²¢Ö´ÐÐËûÃÇµÄ·½·¨£»
+ * 			1£©¡¢Ö±½ÓÔÚBeanFactoryÖÐÕÒµ½ËùÓÐÀàÐÍÊÇBeanFactoryPostProcessorµÄ×é¼þ£¬²¢Ö´ÐÐËûÃÇµÄ·½·¨
+ * 			2£©¡¢ÔÚ³õÊ¼»¯´´½¨ÆäËû×é¼þÇ°ÃæÖ´ÐÐ
  * 
- * 2ï¿½ï¿½BeanDefinitionRegistryPostProcessor extends BeanFactoryPostProcessor
+ * 2¡¢BeanDefinitionRegistryPostProcessor extends BeanFactoryPostProcessor
  * 		postProcessBeanDefinitionRegistry();
- * 		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½beanÊµï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½
+ * 		ÔÚËùÓÐbean¶¨ÒåÐÅÏ¢½«Òª±»¼ÓÔØ£¬beanÊµÀý»¹Î´´´½¨µÄ£»
  * 
- * 		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BeanFactoryPostProcessorÖ´ï¿½Ð£ï¿½
- * 		ï¿½ï¿½ï¿½ï¿½BeanDefinitionRegistryPostProcessorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 		ÓÅÏÈÓÚBeanFactoryPostProcessorÖ´ÐÐ£»
+ * 		ÀûÓÃBeanDefinitionRegistryPostProcessor¸øÈÝÆ÷ÖÐÔÙ¶îÍâÌí¼ÓÒ»Ð©×é¼þ£»
  * 
- * 	Ô­ï¿½ï¿½
- * 		1ï¿½ï¿½ï¿½ï¿½iocï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 		2ï¿½ï¿½ï¿½ï¿½refresh()-ï¿½ï¿½invokeBeanFactoryPostProcessors(beanFactory);
- * 		3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½BeanDefinitionRegistryPostProcessorï¿½ï¿½ï¿½ï¿½ï¿½
- * 			1ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½postProcessBeanDefinitionRegistry()ï¿½ï¿½ï¿½ï¿½
- * 			2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½postProcessBeanFactory()ï¿½ï¿½ï¿½ï¿½BeanFactoryPostProcessorï¿½ï¿½
+ * 	Ô­Àí£º
+ * 		1£©¡¢ioc´´½¨¶ÔÏó
+ * 		2£©¡¢refresh()-¡·invokeBeanFactoryPostProcessors(beanFactory);
+ * 		3£©¡¢´ÓÈÝÆ÷ÖÐ»ñÈ¡µ½ËùÓÐµÄBeanDefinitionRegistryPostProcessor×é¼þ¡£
+ * 			1¡¢ÒÀ´Î´¥·¢ËùÓÐµÄpostProcessBeanDefinitionRegistry()·½·¨
+ * 			2¡¢ÔÙÀ´´¥·¢postProcessBeanFactory()·½·¨BeanFactoryPostProcessor£»
  * 
- * 		4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½BeanFactoryPostProcessorï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½postProcessBeanFactory()ï¿½ï¿½ï¿½ï¿½
+ * 		4£©¡¢ÔÙÀ´´ÓÈÝÆ÷ÖÐÕÒµ½BeanFactoryPostProcessor×é¼þ£»È»ºóÒÀ´Î´¥·¢postProcessBeanFactory()·½·¨
  * 	
- * 3ï¿½ï¿½ApplicationListenerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 3¡¢ApplicationListener£º¼àÌýÈÝÆ÷ÖÐ·¢²¼µÄÊÂ¼þ¡£ÊÂ¼þÇý¶¯Ä£ÐÍ¿ª·¢£»
  * 	  public interface ApplicationListener<E extends ApplicationEvent>
- * 		ï¿½ï¿½ï¿½ï¿½ ApplicationEvent ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
+ * 		¼àÌý ApplicationEvent ¼°ÆäÏÂÃæµÄ×ÓÊÂ¼þ£»
  * 
- * 	 ï¿½ï¿½ï¿½è£º
- * 		1ï¿½ï¿½ï¿½ï¿½Ð´Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ApplicationListenerÊµï¿½ï¿½ï¿½à£©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ApplicationEventï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à£©
+ * 	 ²½Öè£º
+ * 		1£©¡¢Ð´Ò»¸ö¼àÌýÆ÷£¨ApplicationListenerÊµÏÖÀà£©À´¼àÌýÄ³¸öÊÂ¼þ£¨ApplicationEvent¼°Æä×ÓÀà£©
  * 			@EventListener;
- * 			Ô­ï¿½ï¿½Ê¹ï¿½ï¿½EventListenerMethodProcessorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½@EventListenerï¿½ï¿½
+ * 			Ô­Àí£ºÊ¹ÓÃEventListenerMethodProcessor´¦ÀíÆ÷À´½âÎö·½·¨ÉÏµÄ@EventListener£»
  * 
- * 		2ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 		3ï¿½ï¿½ï¿½ï¿½Ö»Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ü¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
- * 				ContextRefreshedEventï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á·¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
- * 				ContextClosedEventï¿½ï¿½ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á·¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
- * 		4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
- * 				applicationContext.publishEvent()ï¿½ï¿½
+ * 		2£©¡¢°Ñ¼àÌýÆ÷¼ÓÈëµ½ÈÝÆ÷£»
+ * 		3£©¡¢Ö»ÒªÈÝÆ÷ÖÐÓÐÏà¹ØÊÂ¼þµÄ·¢²¼£¬ÎÒÃÇ¾ÍÄÜ¼àÌýµ½Õâ¸öÊÂ¼þ£»
+ * 				ContextRefreshedEvent£ºÈÝÆ÷Ë¢ÐÂÍê³É£¨ËùÓÐbean¶¼ÍêÈ«´´½¨£©»á·¢²¼Õâ¸öÊÂ¼þ£»
+ * 				ContextClosedEvent£º¹Ø±ÕÈÝÆ÷»á·¢²¼Õâ¸öÊÂ¼þ£»
+ * 		4£©¡¢·¢²¼Ò»¸öÊÂ¼þ£º
+ * 				applicationContext.publishEvent()£»
  * 	
- *  Ô­ï¿½ï¿½
- *  	ContextRefreshedEventï¿½ï¿½IOCTest_Ext$1[source=ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½]ï¿½ï¿½ContextClosedEventï¿½ï¿½
- *  1ï¿½ï¿½ï¿½ï¿½ContextRefreshedEventï¿½Â¼ï¿½ï¿½ï¿½
- *  	1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½refresh()ï¿½ï¿½
- *  	2ï¿½ï¿½ï¿½ï¿½finishRefresh();ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½É»á·¢ï¿½ï¿½ContextRefreshedEventï¿½Â¼ï¿½
- *  2ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
- *  3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø±Õ»á·¢ï¿½ï¿½ContextClosedEventï¿½ï¿½
+ *  Ô­Àí£º
+ *  	ContextRefreshedEvent¡¢IOCTest_Ext$1[source=ÎÒ·¢²¼µÄÊ±¼ä]¡¢ContextClosedEvent£»
+ *  1£©¡¢ContextRefreshedEventÊÂ¼þ£º
+ *  	1£©¡¢ÈÝÆ÷´´½¨¶ÔÏó£ºrefresh()£»
+ *  	2£©¡¢finishRefresh();ÈÝÆ÷Ë¢ÐÂÍê³É»á·¢²¼ContextRefreshedEventÊÂ¼þ
+ *  2£©¡¢×Ô¼º·¢²¼ÊÂ¼þ£»
+ *  3£©¡¢ÈÝÆ÷¹Ø±Õ»á·¢²¼ContextClosedEvent£»
  *  
- *  ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¡ï¿½ï¿½ï¿½
- *  	3ï¿½ï¿½ï¿½ï¿½publishEvent(new ContextRefreshedEvent(this));
- *  			1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Â¼ï¿½ï¿½Ä¶à²¥ï¿½ï¿½ï¿½ï¿½ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½getApplicationEventMulticaster()
- *  			2ï¿½ï¿½ï¿½ï¿½multicastEventï¿½É·ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
- *  			3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ApplicationListenerï¿½ï¿½
+ *  ¡¾ÊÂ¼þ·¢²¼Á÷³Ì¡¿£º
+ *  	3£©¡¢publishEvent(new ContextRefreshedEvent(this));
+ *  			1£©¡¢»ñÈ¡ÊÂ¼þµÄ¶à²¥Æ÷£¨ÅÉ·¢Æ÷£©£ºgetApplicationEventMulticaster()
+ *  			2£©¡¢multicastEventÅÉ·¢ÊÂ¼þ£º
+ *  			3£©¡¢»ñÈ¡µ½ËùÓÐµÄApplicationListener£»
  *  				for (final ApplicationListener<?> listener : getApplicationListeners(event, type)) {
- *  				1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Executorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½Ê¹ï¿½ï¿½Executorï¿½ï¿½ï¿½ï¿½ï¿½ì²½ï¿½É·ï¿½ï¿½ï¿½
+ *  				1£©¡¢Èç¹ûÓÐExecutor£¬¿ÉÒÔÖ§³ÖÊ¹ÓÃExecutor½øÐÐÒì²½ÅÉ·¢£»
  *  					Executor executor = getTaskExecutor();
- *  				2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Ä·ï¿½Ê½Ö±ï¿½ï¿½Ö´ï¿½ï¿½listenerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½invokeListener(listener, event);
- *  				 ï¿½Ãµï¿½listenerï¿½Øµï¿½onApplicationEventï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *  				2£©¡¢·ñÔò£¬Í¬²½µÄ·½Ê½Ö±½ÓÖ´ÐÐlistener·½·¨£»invokeListener(listener, event);
+ *  				 ÄÃµ½listener»Øµ÷onApplicationEvent·½·¨£»
  *  
- *  ï¿½ï¿½ï¿½Â¼ï¿½ï¿½à²¥ï¿½ï¿½ï¿½ï¿½ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- *  	1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½refresh();
- *  	2ï¿½ï¿½ï¿½ï¿½initApplicationEventMulticaster();ï¿½ï¿½Ê¼ï¿½ï¿½ApplicationEventMulticasterï¿½ï¿½
- *  		1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½id=ï¿½ï¿½applicationEventMulticasterï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- *  		2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½this.applicationEventMulticaster = new SimpleApplicationEventMulticaster(beanFactory);
- *  			ï¿½ï¿½ï¿½Ò¼ï¿½ï¿½ëµ½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½Ç¾Í¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½É·ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½applicationEventMulticasterï¿½ï¿½
+ *  ¡¾ÊÂ¼þ¶à²¥Æ÷£¨ÅÉ·¢Æ÷£©¡¿
+ *  	1£©¡¢ÈÝÆ÷´´½¨¶ÔÏó£ºrefresh();
+ *  	2£©¡¢initApplicationEventMulticaster();³õÊ¼»¯ApplicationEventMulticaster£»
+ *  		1£©¡¢ÏÈÈ¥ÈÝÆ÷ÖÐÕÒÓÐÃ»ÓÐid=¡°applicationEventMulticaster¡±µÄ×é¼þ£»
+ *  		2£©¡¢Èç¹ûÃ»ÓÐthis.applicationEventMulticaster = new SimpleApplicationEventMulticaster(beanFactory);
+ *  			²¢ÇÒ¼ÓÈëµ½ÈÝÆ÷ÖÐ£¬ÎÒÃÇ¾Í¿ÉÒÔÔÚÆäËû×é¼þÒªÅÉ·¢ÊÂ¼þ£¬×Ô¶¯×¢ÈëÕâ¸öapplicationEventMulticaster£»
  *  
- *  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- *  	1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½refresh();
- *  	2ï¿½ï¿½ï¿½ï¿½registerListeners();
- *  		ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ÐµÄ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½áµ½applicationEventMulticasterï¿½Ð£ï¿½
+ *  ¡¾ÈÝÆ÷ÖÐÓÐÄÄÐ©¼àÌýÆ÷¡¿
+ *  	1£©¡¢ÈÝÆ÷´´½¨¶ÔÏó£ºrefresh();
+ *  	2£©¡¢registerListeners();
+ *  		´ÓÈÝÆ÷ÖÐÄÃµ½ËùÓÐµÄ¼àÌýÆ÷£¬°ÑËûÃÇ×¢²áµ½applicationEventMulticasterÖÐ£»
  *  		String[] listenerBeanNames = getBeanNamesForType(ApplicationListener.class, true, false);
- *  		//ï¿½ï¿½listener×¢ï¿½áµ½ApplicationEventMulticasterï¿½ï¿½
+ *  		//½«listener×¢²áµ½ApplicationEventMulticasterÖÐ
  *  		getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);
  *  		
- *   SmartInitializingSingleton Ô­ï¿½ï¿½->afterSingletonsInstantiated();
- *   		1ï¿½ï¿½ï¿½ï¿½iocï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½refresh()ï¿½ï¿½
- *   		2ï¿½ï¿½ï¿½ï¿½finishBeanFactoryInitialization(beanFactory);ï¿½ï¿½Ê¼ï¿½ï¿½Ê£ï¿½ÂµÄµï¿½Êµï¿½ï¿½beanï¿½ï¿½
- *   			1ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄµï¿½Êµï¿½ï¿½beanï¿½ï¿½getBean();
- *   			2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ÃµÄµï¿½Êµï¿½ï¿½beanï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½SmartInitializingSingletonï¿½ï¿½ï¿½ÍµÄ£ï¿½
- *   				ï¿½ï¿½ï¿½ï¿½Ç¾Íµï¿½ï¿½ï¿½afterSingletonsInstantiated();
+ *   SmartInitializingSingleton Ô­Àí£º->afterSingletonsInstantiated();
+ *   		1£©¡¢iocÈÝÆ÷´´½¨¶ÔÏó²¢refresh()£»
+ *   		2£©¡¢finishBeanFactoryInitialization(beanFactory);³õÊ¼»¯Ê£ÏÂµÄµ¥ÊµÀýbean£»
+ *   			1£©¡¢ÏÈ´´½¨ËùÓÐµÄµ¥ÊµÀýbean£»getBean();
+ *   			2£©¡¢»ñÈ¡ËùÓÐ´´½¨ºÃµÄµ¥ÊµÀýbean£¬ÅÐ¶ÏÊÇ·ñÊÇSmartInitializingSingletonÀàÐÍµÄ£»
+ *   				Èç¹ûÊÇ¾Íµ÷ÓÃafterSingletonsInstantiated();
  * 		
  * 
  *

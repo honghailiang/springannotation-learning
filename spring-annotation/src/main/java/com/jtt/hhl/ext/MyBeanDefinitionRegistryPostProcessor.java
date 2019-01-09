@@ -1,6 +1,5 @@
 package com.jtt.hhl.ext;
 
-import com.jtt.hhl.bean.Blue;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
@@ -9,20 +8,22 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 import org.springframework.stereotype.Component;
 
+import com.jtt.hhl.bean.Blue;
+
 @Component
 public class MyBeanDefinitionRegistryPostProcessor implements BeanDefinitionRegistryPostProcessor{
 
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
 		// TODO Auto-generated method stub
-		System.out.println("MyBeanDefinitionRegistryPostProcessor...beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+beanFactory.getBeanDefinitionCount());
+		System.out.println("MyBeanDefinitionRegistryPostProcessor...beanµÄÊýÁ¿£º"+beanFactory.getBeanDefinitionCount());
 	}
 
-	//BeanDefinitionRegistry Beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Ôºï¿½BeanFactoryï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½BeanDefinitionRegistryï¿½ï¿½ï¿½æ±£ï¿½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½beanÊµï¿½ï¿½ï¿½ï¿½
+	//BeanDefinitionRegistry Bean¶¨ÒåÐÅÏ¢µÄ±£´æÖÐÐÄ£¬ÒÔºóBeanFactory¾ÍÊÇ°´ÕÕBeanDefinitionRegistryÀïÃæ±£´æµÄÃ¿Ò»¸öbean¶¨ÒåÐÅÏ¢´´½¨beanÊµÀý£»
 	@Override
 	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
 		// TODO Auto-generated method stub
-		System.out.println("postProcessBeanDefinitionRegistry...beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+registry.getBeanDefinitionCount());
+		System.out.println("postProcessBeanDefinitionRegistry...beanµÄÊýÁ¿£º"+registry.getBeanDefinitionCount());
 		//RootBeanDefinition beanDefinition = new RootBeanDefinition(Blue.class);
 		AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.rootBeanDefinition(Blue.class).getBeanDefinition();
 		registry.registerBeanDefinition("hello", beanDefinition);

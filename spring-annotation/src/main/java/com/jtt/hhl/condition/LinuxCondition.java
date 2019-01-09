@@ -7,28 +7,28 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-//ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½linuxÏµÍ³
+//ÅĞ¶ÏÊÇ·ñlinuxÏµÍ³
 public class LinuxCondition implements Condition {
 
 	/**
-	 * ConditionContextï¿½ï¿½ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * AnnotatedTypeMetadataï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ï¢
+	 * ConditionContext£ºÅĞ¶ÏÌõ¼şÄÜÊ¹ÓÃµÄÉÏÏÂÎÄ£¨»·¾³£©
+	 * AnnotatedTypeMetadata£º×¢ÊÍĞÅÏ¢
 	 */
 	@Override
 	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-		// TODOï¿½Ç·ï¿½linuxÏµÍ³
-		//1ï¿½ï¿½ï¿½Ü»ï¿½È¡ï¿½ï¿½iocÊ¹ï¿½Ãµï¿½beanfactory
+		// TODOÊÇ·ñlinuxÏµÍ³
+		//1¡¢ÄÜ»ñÈ¡µ½iocÊ¹ÓÃµÄbeanfactory
 		ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
-		//2ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//2¡¢»ñÈ¡Àà¼ÓÔØÆ÷
 		ClassLoader classLoader = context.getClassLoader();
-		//3ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+		//3¡¢»ñÈ¡µ±Ç°»·¾³ĞÅÏ¢
 		Environment environment = context.getEnvironment();
-		//4ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½
+		//4¡¢»ñÈ¡µ½bean¶¨ÒåµÄ×¢²áÀà
 		BeanDefinitionRegistry registry = context.getRegistry();
 		
 		String property = environment.getProperty("os.name");
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½bean×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½bean
+		//¿ÉÒÔÅĞ¶ÏÈİÆ÷ÖĞµÄbean×¢²áÇé¿ö£¬Ò²¿ÉÒÔ¸øÈİÆ÷ÖĞ×¢²ábean
 		boolean definition = registry.containsBeanDefinition("person");
 		if(property.contains("linux")){
 			return true;

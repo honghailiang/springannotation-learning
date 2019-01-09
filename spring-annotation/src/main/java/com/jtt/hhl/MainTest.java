@@ -1,9 +1,10 @@
 package com.jtt.hhl;
 
-import com.jtt.hhl.bean.Person;
-import com.jtt.hhl.config.MainConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.jtt.hhl.bean.Person;
+import com.jtt.hhl.config.MainConfig;
 
 public class MainTest {
 	

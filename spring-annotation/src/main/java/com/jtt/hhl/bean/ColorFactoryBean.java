@@ -2,10 +2,10 @@ package com.jtt.hhl.bean;
 
 import org.springframework.beans.factory.FactoryBean;
 
-//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Springï¿½ï¿½ï¿½ï¿½ï¿½FactoryBean
+//´´½¨Ò»¸öSpring¶¨ÒåµÄFactoryBean
 public class ColorFactoryBean implements FactoryBean<Color> {
 
-	//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Colorï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//·µ»ØÒ»¸öColor¶ÔÏó£¬Õâ¸ö¶ÔÏó»áÌí¼Óµ½ÈÝÆ÷ÖÐ
 	@Override
 	public Color getObject() throws Exception {
 		// TODO Auto-generated method stub
@@ -19,9 +19,9 @@ public class ColorFactoryBean implements FactoryBean<Color> {
 		return Color.class;
 	}
 
-	//ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½
-	//trueï¿½ï¿½ï¿½ï¿½ï¿½beanï¿½Çµï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
-	//falseï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ã¿ï¿½Î»ï¿½È¡ï¿½ï¿½ï¿½á´´ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½beanï¿½ï¿½
+	//ÊÇµ¥Àý£¿
+	//true£ºÕâ¸öbeanÊÇµ¥ÊµÀý£¬ÔÚÈÝÆ÷ÖÐ±£´æÒ»·Ý
+	//false£º¶àÊµÀý£¬Ã¿´Î»ñÈ¡¶¼»á´´½¨Ò»¸öÐÂµÄbean£»
 	@Override
 	public boolean isSingleton() {
 		// TODO Auto-generated method stub

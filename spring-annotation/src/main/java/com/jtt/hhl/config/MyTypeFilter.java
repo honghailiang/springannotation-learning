@@ -12,18 +12,18 @@ import org.springframework.core.type.filter.TypeFilter;
 public class MyTypeFilter implements TypeFilter {
 
 	/**
-	 * metadataReaderï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Äµï¿½Ç°ï¿½ï¿½ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
-	 * metadataReaderFactory:ï¿½ï¿½ï¿½Ô»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
+	 * metadataReader£º¶ÁÈ¡µ½µÄµ±Ç°ÕıÔÚÉ¨ÃèµÄÀàµÄĞÅÏ¢
+	 * metadataReaderFactory:¿ÉÒÔ»ñÈ¡µ½ÆäËûÈÎºÎÀàĞÅÏ¢µÄ
 	 */
 	@Override
 	public boolean match(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory)
 			throws IOException {
 		// TODO Auto-generated method stub
-		//ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+		//»ñÈ¡µ±Ç°Àà×¢½âµÄĞÅÏ¢
 		AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();
-		//ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+		//»ñÈ¡µ±Ç°ÕıÔÚÉ¨ÃèµÄÀàµÄÀàĞÅÏ¢
 		ClassMetadata classMetadata = metadataReader.getClassMetadata();
-		//ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½
+		//»ñÈ¡µ±Ç°Àà×ÊÔ´£¨ÀàµÄÂ·¾¶£©
 		Resource resource = metadataReader.getResource();
 		
 		String className = classMetadata.getClassName();

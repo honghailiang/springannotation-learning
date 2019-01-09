@@ -1,10 +1,9 @@
 package com.jtt.hhl.test;
 
+import com.jtt.hhl.ext.ExtConfig;
 import org.junit.Test;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.jtt.hhl.ext.ExtConfig;
 
 public class IOCTest_Ext {
 	
@@ -13,8 +12,8 @@ public class IOCTest_Ext {
 		AnnotationConfigApplicationContext applicationContext  = new AnnotationConfigApplicationContext(ExtConfig.class);
 		
 		
-		//ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
-		applicationContext.publishEvent(new ApplicationEvent(new String("ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½")) {
+		//·¢²¼ÊÂ¼þ£»
+		applicationContext.publishEvent(new ApplicationEvent(new String("ÎÒ·¢²¼µÄÊ±¼ä")) {
 		});
 		
 		applicationContext.close();

@@ -15,7 +15,7 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 		System.out.println("MyBeanFactoryPostProcessor...postProcessBeanFactory...");
 		int count = beanFactory.getBeanDefinitionCount();
 		String[] names = beanFactory.getBeanDefinitionNames();
-		System.out.println("ï¿½ï¿½Ç°BeanFactoryï¿½ï¿½ï¿½ï¿½"+count+" ï¿½ï¿½Bean");
+		System.out.println("µ±Ç°BeanFactoryÖÐÓÐ"+count+" ¸öBean");
 		System.out.println(Arrays.asList(names));
 	}
 

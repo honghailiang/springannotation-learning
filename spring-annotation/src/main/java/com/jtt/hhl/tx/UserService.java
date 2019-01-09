@@ -15,7 +15,7 @@ public class UserService {
 	public void insertUser(){
 		userDao.insert();
 		//otherDao.other();xxx
-		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...");
+		System.out.println("²åÈëÍê³É...");
 		int i = 10/0;
 	}
 

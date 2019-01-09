@@ -5,7 +5,7 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-//�ж��Ƿ�windowsϵͳ
+//�ж��Ƿ�windowsϵͳ
 public class WindowsCondition implements Condition {
 
 	@Override

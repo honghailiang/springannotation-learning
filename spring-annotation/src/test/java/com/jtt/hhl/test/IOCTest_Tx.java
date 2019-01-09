@@ -1,10 +1,10 @@
 package com.jtt.hhl.test;
 
+import com.jtt.hhl.tx.UserService;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.jtt.hhl.tx.TxConfig;
-import com.jtt.hhl.tx.UserService;
 
 public class IOCTest_Tx {
 	

@@ -2,7 +2,7 @@ package com.jtt.hhl.dao;
 
 import org.springframework.stereotype.Repository;
 
-//锟斤拷锟斤拷默锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷母小写
+//名字默认是类名首字母小写
 @Repository
 public class BookDao {
 	

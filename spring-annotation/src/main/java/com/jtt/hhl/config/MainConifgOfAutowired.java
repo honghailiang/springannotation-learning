@@ -1,5 +1,6 @@
 package com.jtt.hhl.config;
 
+import com.jtt.hhl.dao.BookDao;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -7,47 +8,46 @@ import org.springframework.context.annotation.Primary;
 
 import com.jtt.hhl.bean.Car;
 import com.jtt.hhl.bean.Color;
-import com.jtt.hhl.dao.BookDao;
 
 
 /**
- * ï¿½Ô¶ï¿½×°ï¿½ï¿½;
- * 		Springï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ë£¨DIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½IOCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Öµï¿½ï¿½
+ * ×Ô¶¯×°Åä;
+ * 		SpringÀûÓÃÒÀÀµ×¢Èë£¨DI£©£¬Íê³É¶ÔIOCÈÝÆ÷ÖÐÖÐ¸÷¸ö×é¼þµÄÒÀÀµ¹ØÏµ¸³Öµ£»
  * 
- * 1ï¿½ï¿½ï¿½ï¿½@Autowiredï¿½ï¿½ï¿½Ô¶ï¿½×¢ï¿½ë£º
- * 		1ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½È°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½:applicationContext.getBean(BookDao.class);ï¿½Òµï¿½ï¿½Í¸ï¿½Öµ
- * 		2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½idÈ¥ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½
+ * 1£©¡¢@Autowired£º×Ô¶¯×¢Èë£º
+ * 		1£©¡¢Ä¬ÈÏÓÅÏÈ°´ÕÕÀàÐÍÈ¥ÈÝÆ÷ÖÐÕÒ¶ÔÓ¦µÄ×é¼þ:applicationContext.getBean(BookDao.class);ÕÒµ½¾Í¸³Öµ
+ * 		2£©¡¢Èç¹ûÕÒµ½¶à¸öÏàÍ¬ÀàÐÍµÄ×é¼þ£¬ÔÙ½«ÊôÐÔµÄÃû³Æ×÷Îª×é¼þµÄidÈ¥ÈÝÆ÷ÖÐ²éÕÒ
  * 							applicationContext.getBean("bookDao")
- * 		3ï¿½ï¿½ï¿½ï¿½@Qualifier("bookDao")ï¿½ï¿½Ê¹ï¿½ï¿½@QualifierÖ¸ï¿½ï¿½ï¿½ï¿½Òª×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- * 		4ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½×°ï¿½ï¿½Ä¬ï¿½ï¿½Ò»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½Öµï¿½Ã£ï¿½Ã»ï¿½Ð¾Í»á±¨ï¿½ï¿½
- * 			ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½@Autowired(required=false);
- * 		5ï¿½ï¿½ï¿½ï¿½@Primaryï¿½ï¿½ï¿½ï¿½Springï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½×°ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ä¬ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½beanï¿½ï¿½
- * 				Ò²ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½@QualifierÖ¸ï¿½ï¿½ï¿½ï¿½Òª×°ï¿½ï¿½ï¿½beanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 		3£©¡¢@Qualifier("bookDao")£ºÊ¹ÓÃ@QualifierÖ¸¶¨ÐèÒª×°ÅäµÄ×é¼þµÄid£¬¶ø²»ÊÇÊ¹ÓÃÊôÐÔÃû
+ * 		4£©¡¢×Ô¶¯×°ÅäÄ¬ÈÏÒ»¶¨Òª½«ÊôÐÔ¸³ÖµºÃ£¬Ã»ÓÐ¾Í»á±¨´í£»
+ * 			¿ÉÒÔÊ¹ÓÃ@Autowired(required=false);
+ * 		5£©¡¢@Primary£ºÈÃSpring½øÐÐ×Ô¶¯×°ÅäµÄÊ±ºò£¬Ä¬ÈÏÊ¹ÓÃÊ×Ñ¡µÄbean£»
+ * 				Ò²¿ÉÒÔ¼ÌÐøÊ¹ÓÃ@QualifierÖ¸¶¨ÐèÒª×°ÅäµÄbeanµÄÃû×Ö
  * 		BookService{
  * 			@Autowired
  * 			BookDao  bookDao;
  * 		}
  * 
- * 2ï¿½ï¿½ï¿½ï¿½Springï¿½ï¿½Ö§ï¿½ï¿½Ê¹ï¿½ï¿½@Resource(JSR250)ï¿½ï¿½@Inject(JSR330)[javaï¿½æ·¶ï¿½ï¿½×¢ï¿½ï¿½]
+ * 2£©¡¢Spring»¹Ö§³ÖÊ¹ÓÃ@Resource(JSR250)ºÍ@Inject(JSR330)[java¹æ·¶µÄ×¢½â]
  * 		@Resource:
- * 			ï¿½ï¿½ï¿½Ôºï¿½@AutowiredÒ»ï¿½ï¿½Êµï¿½ï¿½ï¿½Ô¶ï¿½×°ï¿½ä¹¦ï¿½Ü£ï¿½Ä¬ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½×°ï¿½ï¿½Ä£ï¿½
- * 			Ã»ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½@Primaryï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ö§ï¿½ï¿½@Autowiredï¿½ï¿½reqiured=falseï¿½ï¿½;
+ * 			¿ÉÒÔºÍ@AutowiredÒ»ÑùÊµÏÖ×Ô¶¯×°Åä¹¦ÄÜ£»Ä¬ÈÏÊÇ°´ÕÕ×é¼þÃû³Æ½øÐÐ×°ÅäµÄ£»
+ * 			Ã»ÓÐÄÜÖ§³Ö@Primary¹¦ÄÜÃ»ÓÐÖ§³Ö@Autowired£¨reqiured=false£©;
  * 		@Inject:
- * 			ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½javax.injectï¿½Ä°ï¿½ï¿½ï¿½ï¿½ï¿½Autowiredï¿½Ä¹ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½required=falseï¿½Ä¹ï¿½ï¿½Ü£ï¿½
- *  @Autowired:Springï¿½ï¿½ï¿½ï¿½Ä£ï¿½ @Resourceï¿½ï¿½@Injectï¿½ï¿½ï¿½ï¿½javaï¿½æ·¶
+ * 			ÐèÒªµ¼Èëjavax.injectµÄ°ü£¬ºÍAutowiredµÄ¹¦ÄÜÒ»Ñù¡£Ã»ÓÐrequired=falseµÄ¹¦ÄÜ£»
+ *  @Autowired:Spring¶¨ÒåµÄ£» @Resource¡¢@Inject¶¼ÊÇjava¹æ·¶
  * 	
- * AutowiredAnnotationBeanPostProcessor:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½×°ï¿½ä¹¦ï¿½Ü£ï¿½		
+ * AutowiredAnnotationBeanPostProcessor:½âÎöÍê³É×Ô¶¯×°Åä¹¦ÄÜ£»		
  * 
- * 3ï¿½ï¿½ï¿½ï¿½ @Autowired:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ
- * 		1ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½×¢ï¿½Ú·ï¿½ï¿½ï¿½Î»ï¿½ï¿½]ï¿½ï¿½@Bean+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡;Ä¬ï¿½Ï²ï¿½Ð´@AutowiredÐ§ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½×°ï¿½ï¿½
- * 		2ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð²Î¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²Î¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@Autowiredï¿½ï¿½ï¿½ï¿½Ê¡ï¿½Ô£ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡
- * 		3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½
+ * 3£©¡¢ @Autowired:¹¹ÔìÆ÷£¬²ÎÊý£¬·½·¨£¬ÊôÐÔ£»¶¼ÊÇ´ÓÈÝÆ÷ÖÐ»ñÈ¡²ÎÊý×é¼þµÄÖµ
+ * 		1£©¡¢[±ê×¢ÔÚ·½·¨Î»ÖÃ]£º@Bean+·½·¨²ÎÊý£»²ÎÊý´ÓÈÝÆ÷ÖÐ»ñÈ¡;Ä¬ÈÏ²»Ð´@AutowiredÐ§¹ûÊÇÒ»ÑùµÄ£»¶¼ÄÜ×Ô¶¯×°Åä
+ * 		2£©¡¢[±êÔÚ¹¹ÔìÆ÷ÉÏ]£ºÈç¹û×é¼þÖ»ÓÐÒ»¸öÓÐ²Î¹¹ÔìÆ÷£¬Õâ¸öÓÐ²Î¹¹ÔìÆ÷µÄ@Autowired¿ÉÒÔÊ¡ÂÔ£¬²ÎÊýÎ»ÖÃµÄ×é¼þ»¹ÊÇ¿ÉÒÔ×Ô¶¯´ÓÈÝÆ÷ÖÐ»ñÈ¡
+ * 		3£©¡¢·ÅÔÚ²ÎÊýÎ»ÖÃ£º
  * 
- * 4ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÊ¹ï¿½ï¿½Springï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ApplicationContextï¿½ï¿½BeanFactoryï¿½ï¿½xxxï¿½ï¿½ï¿½ï¿½
- * 		ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½xxxAwareï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò£¬»ï¿½ï¿½ï¿½Ã½Ó¿Ú¹æ¶¨ï¿½Ä·ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Awareï¿½ï¿½
- * 		ï¿½ï¿½Springï¿½×²ï¿½Ò»Ð©ï¿½ï¿½ï¿½×¢ï¿½ëµ½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Beanï¿½Ð£ï¿½
- * 		xxxAwareï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½xxxProcessorï¿½ï¿½
- * 			ApplicationContextAware==ï¿½ï¿½ApplicationContextAwareProcessorï¿½ï¿½
+ * 4£©¡¢×Ô¶¨Òå×é¼þÏëÒªÊ¹ÓÃSpringÈÝÆ÷µ×²ãµÄÒ»Ð©×é¼þ£¨ApplicationContext£¬BeanFactory£¬xxx£©£»
+ * 		×Ô¶¨Òå×é¼þÊµÏÖxxxAware£»ÔÚ´´½¨¶ÔÏóµÄÊ±ºò£¬»áµ÷ÓÃ½Ó¿Ú¹æ¶¨µÄ·½·¨×¢ÈëÏà¹Ø×é¼þ£»Aware£»
+ * 		°ÑSpringµ×²ãÒ»Ð©×é¼þ×¢Èëµ½×Ô¶¨ÒåµÄBeanÖÐ£»
+ * 		xxxAware£º¹¦ÄÜÊ¹ÓÃxxxProcessor£»
+ * 			ApplicationContextAware==¡·ApplicationContextAwareProcessor£»
  * 	
  * 		
  * @author lfy
@@ -67,7 +67,7 @@ public class MainConifgOfAutowired {
 	}
 	
 	/**
-	 * @Beanï¿½ï¿½×¢ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ò£¬·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡
+	 * @Bean±ê×¢µÄ·½·¨´´½¨¶ÔÏóµÄÊ±ºò£¬·½·¨²ÎÊýµÄÖµ´ÓÈÝÆ÷ÖÐ»ñÈ¡
 	 * @param car
 	 * @return
 	 */
