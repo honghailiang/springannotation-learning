@@ -16,7 +16,7 @@ public class LinuxCondition implements Condition {
 	 */
 	@Override
 	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-		// TODO是否linux系统
+		是否linux系统
 		//1、能获取到ioc使用的beanfactory
 		ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
 		//2、获取类加载器
