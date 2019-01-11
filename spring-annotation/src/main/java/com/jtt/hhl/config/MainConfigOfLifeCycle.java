@@ -53,8 +53,7 @@ import com.jtt.hhl.bean.Car;
  * 
  * Spring底层对 BeanPostProcessor 的使用；
  * 		bean赋值，注入其他组件，@Autowired，生命周期注解功能，@Async,xxx BeanPostProcessor;
- * 
- * @author lfy
+ *
  *
  */
 @ComponentScan("com.jtt.hhl.bean")

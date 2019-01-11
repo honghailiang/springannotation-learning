@@ -50,7 +50,7 @@ import com.jtt.hhl.bean.Color;
  * 			ApplicationContextAware==》ApplicationContextAwareProcessor；
  * 	
  * 		
- * @author lfy
+ *
  *
  */
 @Configuration

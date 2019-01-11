@@ -8,7 +8,6 @@ import com.jtt.hhl.condition.LinuxCondition;
 import com.jtt.hhl.condition.MyImportBeanDefinitionRegistrar;
 import com.jtt.hhl.condition.MyImportSelector;
 import com.jtt.hhl.condition.WindowsCondition;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.*;
 
 //类中组件统一设置。满足当前条件，这个类中配置的所有bean注册才能生效；
@@ -20,10 +19,7 @@ public class MainConfig2 {
 	
 	//默认是单实例的
 	/**
-	 * ConfigurableBeanFactory#SCOPE_PROTOTYPE    
-	 * @see ConfigurableBeanFactory#SCOPE_SINGLETON  
-	 * @see org.springframework.web.context.WebApplicationContext#SCOPE_REQUEST  request
-	 * @see org.springframework.web.context.WebApplicationContext#SCOPE_SESSION	 sesssion
+	 * ConfigurableBeanFactory#SCOPE_PROTOTYPE
 	 * @return\
 	 * @Scope:调整作用域
 	 * prototype：多实例的：ioc容器启动并不会去调用方法创建对象放在容器中。
