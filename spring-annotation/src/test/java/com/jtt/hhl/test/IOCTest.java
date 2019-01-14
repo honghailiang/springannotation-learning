@@ -2,19 +2,31 @@ package com.jtt.hhl.test;
 
 import java.util.Map;
 
+import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 import com.jtt.hhl.bean.Blue;
 import com.jtt.hhl.bean.Person;
 import com.jtt.hhl.config.MainConfig;
 import com.jtt.hhl.config.MainConfig2;
+import org.springframework.core.io.ClassPathResource;
 
 public class IOCTest {
 	AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(MainConfig2.class);
-	
-	
+
+	@Test
+	public void testSimpleLoad(){
+        //BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
+        BeanFactory beanFactory = new ClassPathXmlApplicationContext("beans.xml");
+        Person person = (Person) beanFactory.getBean("person");
+        Assert.assertEquals("zhangsan", person.getName());
+    }
+
 	@Test
 	public void testImport(){
 		printBeans(applicationContext);
